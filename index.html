@@ -15,16 +15,13 @@
         :root {
             --emergency-red: #B91C1C;
             --warning-orange: #EA580C;
-            --alert-yellow: #F59E0B;
-            --danger-bg: #450A0A;
             --text-dark: #1F2937;
-            --text-light: #FFFFFF;
         }
 
         body {
             font-family: 'Inter', sans-serif;
             background: linear-gradient(180deg, #1F2937 0%, #111827 100%);
-            color: var(--text-light);
+            color: white;
             line-height: 1.5;
             min-height: 100vh;
         }
@@ -32,7 +29,7 @@
         .container {
             max-width: 800px;
             margin: 0 auto;
-            background: var(--text-light);
+            background: white;
             color: var(--text-dark);
         }
 
@@ -103,28 +100,6 @@
             border: 2px solid rgba(255, 255, 255, 0.3);
         }
 
-        @media (min-width: 480px) {
-            .alert-badge {
-                font-size: 14px;
-            }
-        }
-
-        .alert-icon-pulse {
-            font-size: 18px;
-            animation: pulse 1.5s ease-in-out infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% {
-                transform: scale(1);
-                opacity: 1;
-            }
-            50% {
-                transform: scale(1.2);
-                opacity: 0.8;
-            }
-        }
-
         h1 {
             font-family: 'Inter Tight', sans-serif;
             font-weight: 900;
@@ -153,14 +128,6 @@
             font-weight: 600;
             opacity: 0.95;
             line-height: 1.4;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        @media (min-width: 480px) {
-            .subtitle {
-                font-size: 18px;
-            }
         }
 
         @media (min-width: 769px) {
@@ -172,14 +139,11 @@
         .critical-alert {
             background: linear-gradient(135deg, #FEF3C7 0%, #FDE047 100%);
             border: 4px solid var(--warning-orange);
-            margin: 0;
             padding: 25px 20px;
-            position: relative;
         }
 
         @media (min-width: 769px) {
             .critical-alert {
-                margin: 0;
                 padding: 35px 40px;
             }
         }
@@ -201,13 +165,6 @@
             justify-content: center;
             font-size: 28px;
             flex-shrink: 0;
-            animation: shake 3s ease-in-out infinite;
-        }
-
-        @keyframes shake {
-            0%, 95%, 100% { transform: rotate(0deg); }
-            96%, 98% { transform: rotate(-8deg); }
-            97%, 99% { transform: rotate(8deg); }
         }
 
         .critical-title {
@@ -230,7 +187,6 @@
             color: #78350F;
             font-weight: 700;
             line-height: 1.5;
-            margin-bottom: 0;
         }
 
         @media (min-width: 769px) {
@@ -253,7 +209,7 @@
             font-family: 'Inter Tight', sans-serif;
             font-weight: 900;
             font-size: 24px;
-            color: var(--emergency-red);
+            color: black;
             margin-bottom: 20px;
             text-transform: uppercase;
             letter-spacing: -0.5px;
@@ -275,18 +231,17 @@
             margin-bottom: 30px;
         }
 
-        @media (min-width: 769px) {
-            .trap-grid {
-                gap: 20px;
-            }
-        }
-
         .trap-card {
             background: #FEF2F2;
             border-left: 5px solid var(--emergency-red);
             padding: 20px;
             border-radius: 8px;
             transition: all 0.3s ease;
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            position: relative;
         }
 
         @media (min-width: 769px) {
@@ -298,6 +253,24 @@
         .trap-card:hover {
             box-shadow: 0 10px 25px rgba(185, 28, 28, 0.2);
             transform: translateX(5px);
+            background: #FEE2E2;
+        }
+
+        .trap-card::after {
+            content: '→';
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 24px;
+            color: var(--emergency-red);
+            opacity: 0.5;
+            transition: all 0.3s ease;
+        }
+
+        .trap-card:hover::after {
+            opacity: 1;
+            right: 15px;
         }
 
         .trap-number {
@@ -342,6 +315,7 @@
             color: #991B1B;
             line-height: 1.5;
             font-weight: 500;
+            padding-right: 30px;
         }
 
         @media (min-width: 769px) {
@@ -350,18 +324,26 @@
             }
         }
 
+        .click-hint {
+            font-size: 13px;
+            color: var(--emergency-red);
+            font-weight: 600;
+            margin-top: 8px;
+            font-style: italic;
+        }
+
         .threat-box {
             background: linear-gradient(135deg, #1F2937 0%, #111827 100%);
             color: white;
             padding: 30px 20px;
             text-align: center;
             margin: 30px 0;
+            border-radius: 12px;
         }
 
         @media (min-width: 769px) {
             .threat-box {
                 padding: 40px;
-                border-radius: 12px;
             }
         }
 
@@ -404,13 +386,12 @@
             background: linear-gradient(135deg, var(--warning-orange) 0%, #C2410C 100%);
             color: white;
             padding: 30px 20px;
+            border-radius: 12px;
         }
 
         @media (min-width: 769px) {
             .action-urgent {
                 padding: 40px;
-                border-radius: 12px;
-                margin-top: 30px;
             }
         }
 
@@ -433,13 +414,7 @@
             display: grid;
             gap: 12px;
             max-width: 600px;
-            margin: 0 auto;
-        }
-
-        @media (min-width: 769px) {
-            .action-list {
-                gap: 15px;
-            }
+            margin: 0 auto 20px;
         }
 
         .action-item {
@@ -492,14 +467,6 @@
                 font-size: 18px;
             }
         }
-
-        .highlight-danger {
-            background: rgba(185, 28, 28, 0.15);
-            color: var(--emergency-red);
-            padding: 2px 6px;
-            border-radius: 4px;
-            font-weight: 700;
-        }
     </style>
 </head>
 <body>
@@ -507,8 +474,7 @@
         <div class="emergency-header">
             <div class="header-content">
                 <div class="alert-badge">
-                    <span class="alert-icon-pulse">🚨</span>
-                    DEMOCRACY UNDER ATTACK
+                    ⚠️ DEMOCRACY UNDER ATTACK
                 </div>
                 <h1>The SAVE Act</h1>
                 <p class="subtitle">This isn't voter ID. It's a federal takeover of elections designed to enable mass voter purges.</p>
@@ -527,47 +493,55 @@
 
         <div class="content">
             <h2 class="section-header">5 Traps That Destroy Democracy</h2>
+            <p style="text-align: center; margin-bottom: 20px; font-size: 15px; color: #6B7280;">
+                <strong>👆 Click each box to learn more</strong>
+            </p>
             
             <div class="trap-grid">
-                <div class="trap-card">
+                <a href="learn-more.html#trap1" class="trap-card">
                     <div class="trap-number">1</div>
                     <div class="trap-title">Kills Online & Mail Registration</div>
                     <p class="trap-description">
-                        <span class="highlight-danger">Must appear IN PERSON</span> with original citizenship documents by registration deadline. No scans. No photocopies. No DMV auto-registration. Moves or name changes? Start over.
+                        Must appear IN PERSON with original citizenship documents by registration deadline. No scans. No photocopies. No DMV auto-registration.
                     </p>
-                </div>
+                    <p class="click-hint">Click to learn more →</p>
+                </a>
 
-                <div class="trap-card">
+                <a href="learn-more.html#trap2" class="trap-card">
                     <div class="trap-number">2</div>
                     <div class="trap-title">Creates Federal Surveillance System</div>
                     <p class="trap-description">
-                        Forces states to send ALL voter registration rolls to <span class="highlight-danger">DHS quarterly</span> for verification. Every voter's registration marked with federal "verification status." Unprecedented federal control of state elections.
+                        Forces states to send ALL voter registration rolls to DHS quarterly for verification. Unprecedented federal control of state elections.
                     </p>
-                </div>
+                    <p class="click-hint">Click to learn more →</p>
+                </a>
 
-                <div class="trap-card">
+                <a href="learn-more.html#trap3" class="trap-card">
                     <div class="trap-number">3</div>
                     <div class="trap-title">Enables Mass Purges</div>
                     <p class="trap-description">
-                        Allows voter removal based on <span class="highlight-danger">"verified information"</span> from error-prone DHS databases. One database mistake = you're purged. Private citizens can sue election officials who don't purge aggressively enough.
+                        Allows voter removal based on "verified information" from error-prone DHS databases. One database mistake = you're purged.
                     </p>
-                </div>
+                    <p class="click-hint">Click to learn more →</p>
+                </a>
 
-                <div class="trap-card">
+                <a href="learn-more.html#trap4" class="trap-card">
                     <div class="trap-number">4</div>
                     <div class="trap-title">DHS System Built to Fail</div>
                     <p class="trap-description">
-                        DHS SAVE system was designed for immigration benefits—NOT voting. <span class="highlight-danger">Known error rates</span> will flag legitimate citizens as ineligible. Research confirms: errors cascade into wrongful removals.
+                        DHS SAVE system was designed for immigration benefits—NOT voting. Known error rates will flag legitimate citizens as ineligible.
                     </p>
-                </div>
+                    <p class="click-hint">Click to learn more →</p>
+                </a>
 
-                <div class="trap-card">
+                <a href="learn-more.html#trap5" class="trap-card">
                     <div class="trap-number">5</div>
                     <div class="trap-title">Criminalizes Election Workers</div>
                     <p class="trap-description">
-                        Creates <span class="highlight-danger">criminal penalties</span> for officials who register people without "proper" documentation. Intimidates nonpartisan workers into rejecting legitimate voters.
+                        Creates criminal penalties for officials who register people without "proper" documentation. Intimidates nonpartisan workers.
                     </p>
-                </div>
+                    <p class="click-hint">Click to learn more →</p>
+                </a>
             </div>
 
             <div class="threat-box">
