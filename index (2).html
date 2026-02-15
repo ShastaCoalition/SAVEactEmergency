@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAVE Act: Democracy Under Attack</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;900&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --emergency-red: #B91C1C;
+            --warning-orange: #EA580C;
+            --text-dark: #1F2937;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(180deg, #1F2937 0%, #111827 100%);
+            color: white;
+            line-height: 1.5;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            color: var(--text-dark);
+        }
+
+        @media (min-width: 769px) {
+            body {
+                padding: 30px 15px;
+            }
+            .container {
+                border-radius: 16px;
+                box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            }
+        }
+
+        .emergency-header {
+            background: linear-gradient(135deg, var(--emergency-red) 0%, #7F1D1D 100%);
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        @media (min-width: 769px) {
+            .emergency-header {
+                padding: 50px 40px;
+            }
+        }
+
+        .emergency-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: repeating-linear-gradient(
+                45deg,
+                transparent,
+                transparent 10px,
+                rgba(0,0,0,.1) 10px,
+                rgba(0,0,0,.1) 20px
+            );
+            animation: warning-stripe 20s linear infinite;
+        }
+
+        @keyframes warning-stripe {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(28px); }
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .alert-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 8px 20px;
+            border-radius: 100px;
+            font-weight: 700;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 15px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        h1 {
+            font-family: 'Inter Tight', sans-serif;
+            font-weight: 900;
+            font-size: 32px;
+            line-height: 1;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: -1px;
+        }
+
+        @media (min-width: 480px) {
+            h1 {
+                font-size: 42px;
+            }
+        }
+
+        @media (min-width: 769px) {
+            h1 {
+                font-size: 52px;
+                letter-spacing: -2px;
+            }
+        }
+
+        .subtitle {
+            font-size: 16px;
+            font-weight: 600;
+            opacity: 0.95;
+            line-height: 1.4;
+        }
+
+        @media (min-width: 769px) {
+            .subtitle {
+                font-size: 20px;
+            }
+        }
+
+        .critical-alert {
+            background: linear-gradient(135deg, #FEF3C7 0%, #FDE047 100%);
+            border: 4px solid var(--warning-orange);
+            padding: 25px 20px;
+        }
+
+        @media (min-width: 769px) {
+            .critical-alert {
+                padding: 35px 40px;
+            }
+        }
+
+        .critical-alert-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .alert-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--emergency-red);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            flex-shrink: 0;
+        }
+
+        .critical-title {
+            font-family: 'Inter Tight', sans-serif;
+            font-weight: 900;
+            font-size: 20px;
+            color: #78350F;
+            text-transform: uppercase;
+            line-height: 1.1;
+        }
+
+        @media (min-width: 480px) {
+            .critical-title {
+                font-size: 24px;
+            }
+        }
+
+        .critical-message {
+            font-size: 16px;
+            color: #78350F;
+            font-weight: 700;
+            line-height: 1.5;
+        }
+
+        @media (min-width: 769px) {
+            .critical-message {
+                font-size: 18px;
+            }
+        }
+
+        .content {
+            padding: 30px 20px;
+        }
+
+        @media (min-width: 769px) {
+            .content {
+                padding: 40px;
+            }
+        }
+
+        .section-header {
+            font-family: 'Inter Tight', sans-serif;
+            font-weight: 900;
+            font-size: 24px;
+            color: black;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: -0.5px;
+            text-align: center;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--emergency-red);
+        }
+
+        @media (min-width: 769px) {
+            .section-header {
+                font-size: 28px;
+                margin-bottom: 25px;
+            }
+        }
+
+        .trap-grid {
+            display: grid;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .trap-card {
+            background: #FEF2F2;
+            border-left: 5px solid var(--emergency-red);
+            padding: 20px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            position: relative;
+        }
+
+        @media (min-width: 769px) {
+            .trap-card {
+                padding: 25px;
+            }
+        }
+
+        .trap-card:hover {
+            box-shadow: 0 10px 25px rgba(185, 28, 28, 0.2);
+            transform: translateX(5px);
+            background: #FEE2E2;
+        }
+
+        .trap-card::after {
+            content: '→';
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 24px;
+            color: var(--emergency-red);
+            opacity: 0.5;
+            transition: all 0.3s ease;
+        }
+
+        .trap-card:hover::after {
+            opacity: 1;
+            right: 15px;
+        }
+
+        .trap-number {
+            display: inline-block;
+            background: var(--emergency-red);
+            color: white;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 32px;
+            font-weight: 900;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        @media (min-width: 769px) {
+            .trap-number {
+                width: 36px;
+                height: 36px;
+                line-height: 36px;
+                font-size: 18px;
+            }
+        }
+
+        .trap-title {
+            font-weight: 700;
+            font-size: 17px;
+            color: var(--emergency-red);
+            margin-bottom: 8px;
+            line-height: 1.2;
+        }
+
+        @media (min-width: 769px) {
+            .trap-title {
+                font-size: 18px;
+            }
+        }
+
+        .trap-description {
+            font-size: 15px;
+            color: #991B1B;
+            line-height: 1.5;
+            font-weight: 500;
+            padding-right: 30px;
+        }
+
+        @media (min-width: 769px) {
+            .trap-description {
+                font-size: 16px;
+            }
+        }
+
+        .click-hint {
+            font-size: 13px;
+            color: var(--emergency-red);
+            font-weight: 600;
+            margin-top: 8px;
+            font-style: italic;
+        }
+
+        .threat-box {
+            background: linear-gradient(135deg, #1F2937 0%, #111827 100%);
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+            margin: 30px 0;
+            border-radius: 12px;
+        }
+
+        @media (min-width: 769px) {
+            .threat-box {
+                padding: 40px;
+            }
+        }
+
+        .threat-statement {
+            font-family: 'Inter Tight', sans-serif;
+            font-weight: 900;
+            font-size: 22px;
+            line-height: 1.3;
+            margin-bottom: 15px;
+            color: #FCA5A5;
+        }
+
+        @media (min-width: 480px) {
+            .threat-statement {
+                font-size: 26px;
+            }
+        }
+
+        @media (min-width: 769px) {
+            .threat-statement {
+                font-size: 30px;
+            }
+        }
+
+        .threat-explanation {
+            font-size: 15px;
+            opacity: 0.9;
+            line-height: 1.6;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        @media (min-width: 769px) {
+            .threat-explanation {
+                font-size: 17px;
+            }
+        }
+
+        .action-urgent {
+            background: linear-gradient(135deg, var(--warning-orange) 0%, #C2410C 100%);
+            color: white;
+            padding: 30px 20px;
+            border-radius: 12px;
+        }
+
+        @media (min-width: 769px) {
+            .action-urgent {
+                padding: 40px;
+            }
+        }
+
+        .action-title {
+            font-family: 'Inter Tight', sans-serif;
+            font-weight: 900;
+            font-size: 26px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            text-align: center;
+        }
+
+        @media (min-width: 769px) {
+            .action-title {
+                font-size: 32px;
+            }
+        }
+
+        .action-list {
+            display: grid;
+            gap: 12px;
+            max-width: 600px;
+            margin: 0 auto 20px;
+        }
+
+        .action-item {
+            background: rgba(0, 0, 0, 0.2);
+            padding: 18px;
+            border-radius: 8px;
+            border-left: 4px solid white;
+            font-weight: 600;
+            font-size: 15px;
+            line-height: 1.4;
+        }
+
+        @media (min-width: 769px) {
+            .action-item {
+                padding: 20px;
+                font-size: 16px;
+            }
+        }
+
+        .action-item::before {
+            content: '→ ';
+            font-weight: 900;
+            margin-right: 8px;
+        }
+
+        .footer {
+            background: #1F2937;
+            color: white;
+            padding: 25px 20px;
+            text-align: center;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        @media (min-width: 769px) {
+            .footer {
+                padding: 30px 40px;
+            }
+        }
+
+        .footer-urgent {
+            font-weight: 700;
+            font-size: 16px;
+            color: #FCA5A5;
+            margin-bottom: 10px;
+        }
+
+        @media (min-width: 769px) {
+            .footer-urgent {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="emergency-header">
+            <div class="header-content">
+                <div class="alert-badge">
+                    ⚠️ DEMOCRACY UNDER ATTACK
+                </div>
+                <h1>The SAVE Act</h1>
+                <p class="subtitle">This isn't voter ID. It's a federal takeover of elections designed to enable mass voter purges.</p>
+            </div>
+        </div>
+
+        <div class="critical-alert">
+            <div class="critical-alert-header">
+                <div class="alert-icon">❌</div>
+                <div class="critical-title">Critical Point #1</div>
+            </div>
+            <p class="critical-message">
+                Your California driver's license (including REAL ID) is NOT proof of citizenship. If this passes, it will be rejected—you'd need a passport or birth certificate to register or stay registered to vote in federal elections.
+            </p>
+        </div>
+
+        <div class="content">
+            <h2 class="section-header">5 Traps That Destroy Democracy</h2>
+            <p style="text-align: center; margin-bottom: 20px; font-size: 15px; color: #6B7280;">
+                <strong>👆 Click each box to learn more</strong>
+            </p>
+            
+            <div class="trap-grid">
+                <a href="learn-more.html#trap1" class="trap-card">
+                    <div class="trap-number">1</div>
+                    <div class="trap-title">Kills Online & Mail Registration</div>
+                    <p class="trap-description">
+                        Must appear IN PERSON with original citizenship documents by registration deadline. No scans. No photocopies. No DMV auto-registration.
+                    </p>
+                    <p class="click-hint">Click to learn more →</p>
+                </a>
+
+                <a href="learn-more.html#trap2" class="trap-card">
+                    <div class="trap-number">2</div>
+                    <div class="trap-title">Creates Federal Surveillance System</div>
+                    <p class="trap-description">
+                        Forces states to send ALL voter registration rolls to DHS quarterly for verification. Unprecedented federal control of state elections.
+                    </p>
+                    <p class="click-hint">Click to learn more →</p>
+                </a>
+
+                <a href="learn-more.html#trap3" class="trap-card">
+                    <div class="trap-number">3</div>
+                    <div class="trap-title">Enables Mass Purges</div>
+                    <p class="trap-description">
+                        Allows voter removal based on "verified information" from error-prone DHS databases. One database mistake = you're purged.
+                    </p>
+                    <p class="click-hint">Click to learn more →</p>
+                </a>
+
+                <a href="learn-more.html#trap4" class="trap-card">
+                    <div class="trap-number">4</div>
+                    <div class="trap-title">DHS System Built to Fail</div>
+                    <p class="trap-description">
+                        DHS SAVE system was designed for immigration benefits—NOT voting. Known error rates will flag legitimate citizens as ineligible.
+                    </p>
+                    <p class="click-hint">Click to learn more →</p>
+                </a>
+
+                <a href="learn-more.html#trap5" class="trap-card">
+                    <div class="trap-number">5</div>
+                    <div class="trap-title">Criminalizes Election Workers</div>
+                    <p class="trap-description">
+                        Creates criminal penalties for officials who register people without "proper" documentation. Intimidates nonpartisan workers.
+                    </p>
+                    <p class="click-hint">Click to learn more →</p>
+                </a>
+            </div>
+
+            <div class="threat-box">
+                <div class="threat-statement">
+                    "This isn't about election security. It's about capturing democracy."
+                </div>
+                <p class="threat-explanation">
+                    The SAVE Act creates the infrastructure for right-wing extremists to control who gets to vote through federal surveillance, database errors, and weaponized purges. This is an authoritarian power grab disguised as election reform.
+                </p>
+            </div>
+
+            <div class="action-urgent">
+                <h3 class="action-title">⚡ Act Now—Before It's Too Late</h3>
+                <div class="action-list">
+                    <div class="action-item">Call your Senators TODAY and demand they vote NO on the SAVE Act</div>
+                    <div class="action-item">Share this infographic with everyone you know—most people don't understand the real danger</div>
+                    <div class="action-item">Contact local election officials and ask them to speak out against federal takeover</div>
+                    <div class="action-item">Organize: This threatens democracy itself. We need mass opposition NOW.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p class="footer-urgent">⚠️ TIME IS RUNNING OUT</p>
+            <p>The SAVE Act solves a non-existent problem (in-person voter fraud is virtually non-existent) while creating the machinery for mass disenfranchisement and authoritarian control of elections.</p>
+            <p style="margin-top: 15px; font-weight: 600;">This is not hyperbole. This is the end of fair elections if it passes.</p>
+        </div>
+    </div>
+</body>
+</html>
