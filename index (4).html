@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAVE Act: Democracy Under Attack</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;900&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --red: #B91C1C;
+            --orange: #EA580C;
+            --navy: #1E3A8A;
+            --dark: #1F2937;
+            --text: #374151;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(180deg, #1F2937 0%, #111827 100%);
+            color: white;
+            line-height: 1.5;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            color: var(--dark);
+        }
+
+        @media (min-width: 769px) {
+            body { padding: 30px 15px; }
+            .container { border-radius: 16px; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5); }
+        }
+
+        /* ── HEADER ── */
+        .header {
+            background: linear-gradient(135deg, var(--navy) 0%, #1E40AF 100%);
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        @media (min-width: 769px) { .header { padding: 50px 40px; } }
+
+        /* Flag stripes */
+        .header::before {
+            content: '';
+            position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+            background-image: repeating-linear-gradient(0deg, transparent 0px, transparent 20px, rgba(220,38,38,0.08) 20px, rgba(220,38,38,0.08) 40px);
+            opacity: 0.6;
+        }
+
+        /* Star field */
+        .header::after {
+            content: '';
+            position: absolute; top: 15px; left: 15px;
+            width: 130px; height: 90px;
+            background-image: radial-gradient(circle at center, rgba(255,255,255,0.15) 2px, transparent 2px);
+            background-size: 20px 20px;
+        }
+
+        .header-content { position: relative; z-index: 1; }
+
+        .alert-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(185,28,28,0.9);
+            padding: 8px 20px;
+            border-radius: 100px;
+            font-weight: 700;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 15px;
+            border: 2px solid rgba(255,255,255,0.3);
+        }
+
+        h1 {
+            font-family: 'Inter Tight', sans-serif;
+            font-weight: 900;
+            font-size: 30px;
+            line-height: 1;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: -1px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        @media (min-width: 480px) { h1 { font-size: 42px; } }
+        @media (min-width: 769px) { h1 { font-size: 52px; letter-spacing: -2px; } }
+
+        .header-subtitle {
+            font-size: 16px;
+            font-weight: 600;
+            opacity: 0.95;
+            line-height: 1.4;
+        }
+
+        @media (min-width: 769px) { .header-subtitle { font-size: 20px; } }
+
+        /* ── WHAT IS THE SAVE ACT ── */
+        .what-section {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .what-say {
+            background: linear-gradient(135deg, #DBEAFE 0%, #EFF6FF 100%);
+            padding: 25px 20px;
+            border-bottom: 3px solid white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Capitol watermark */
+        .what-say::after {
+            content: '';
+            position: absolute;
+            right: 10px; bottom: 10px;
+            width: 90px; height: 80px;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 90 80'%3E%3Cpath d='M45 5 L40 18 L50 18 Z M35 18 L55 18 L55 24 L35 24 Z M28 24 L62 24 L62 65 L28 65 Z M38 32 L40 32 L40 50 L38 50 Z M50 32 L52 32 L52 50 L50 50 Z M20 65 L70 65 L70 70 L20 70 Z M15 70 L75 70 L75 75 L15 75 Z' fill='%231E3A8A'/%3E%3C/svg%3E");
+            background-size: contain;
+            background-repeat: no-repeat;
+            opacity: 0.05;
+        }
+
+        @media (min-width: 769px) { .what-say { padding: 30px 40px; } }
+
+        .what-really {
+            background: linear-gradient(135deg, #FEF2F2 0%, #FFF1F2 100%);
+            padding: 25px 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Eagle watermark */
+        .what-really::after {
+            content: '';
+            position: absolute;
+            right: 10px; bottom: 10px;
+            width: 100px; height: 80px;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 80'%3E%3Cpath d='M50 25 C50 25 35 15 20 20 L30 32 C30 32 15 30 10 38 L28 40 L32 48 C32 48 25 55 28 62 L38 55 L50 62 L62 55 L72 62 C75 55 68 48 68 48 L72 40 L90 38 C85 30 70 32 70 32 L80 20 C65 15 50 25 50 25Z M45 32 L55 32 L55 40 L45 40Z' fill='%23B91C1C'/%3E%3C/svg%3E");
+            background-size: contain;
+            background-repeat: no-repeat;
+            opacity: 0.05;
+        }
+
+        @media (min-width: 769px) { .what-really { padding: 30px 40px; } }
+
+        .what-label {
+            font-family: 'Inter Tight', sans-serif;
+            font-weight: 900;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .what-say .what-label { color: var(--navy); }
+        .what-really .what-label { color: var(--red); }
+
+        .what-label-dot {
+            width: 10px; height: 10px;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        .what-say .what-label-dot { background: var(--navy); }
+        .what-really .what-label-dot { background: var(--red); }
+
+        .what-text {
+            font-size: 15px;
+            line-height: 1.6;
+            font-weight: 600;
+            position: relative;
+            z-index: 1;
+        }
+
+        @media (min-width: 769px) { .what-text { font-size: 16px; } }
+
+        .what-say .what-text { color: #1E3A8A; }
+        .what-really .what-text { color: #7F1D1D; }
+
+        .scorpion-quote {
+            background: rgba(185,28,28,0.08);
+            border-left: 4px solid var(--red);
+            padding: 12px 15px;
+            margin-top: 12px;
+            border-radius: 0 8px 8px 0;
+            font-size: 14px;
+            font-style: italic;
+            color: #7F1D1D;
+            font-weight: 600;
+            line-height: 1.5;
+            position: relative;
+            z-index: 1;
+        }
+
+        @media (min-width: 769px) { .scorpion-quote { font-size: 15px; } }
+
+        /* ── CONTENT AREA ── */
+        .content {
+            padding: 30px 20px;
+            background: linear-gradient(to bottom, #fff 0%, #F8FAFC 100%);
+            position: relative;
+        }
+
+        /* Mountain range watermark */
+        .content::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 120px;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 120'%3E%3Cpath d='M0 120 L0 80 L100 40 L200 60 L300 20 L400 50 L500 30 L600 70 L700 40 L800 80 L800 120 Z' fill='%231E3A8A' opacity='0.03'/%3E%3C/svg%3E");
+            background-size: cover;
+            background-position: bottom;
+            pointer-events: none;
+        }
+
+        @media (min-width: 769px) { .content { padding: 40px; } }
+
+        .section-header {
+            font-family: 'Inter Tight', sans-serif;
+            font-weight: 900;
+            font-size: 22px;
+            color: var(--navy);
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: -0.5px;
+            text-align: center;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--red);
+            position: relative;
+        }
+
+        .section-header::before,
+        .section-header::after {
+            content: '';
+            position: absolute; top: 3px;
+            width: 22px; height: 22px;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 2L15 9L22 9L17 14L19 21L12 17L5 21L7 14L2 9L9 9Z' fill='%231E3A8A' opacity='0.25'/%3E%3C/svg%3E");
+            background-size: contain;
+        }
+
+        .section-header::before { left: 5px; }
+        .section-header::after { right: 5px; }
+
+        @media (min-width: 769px) { .section-header { font-size: 26px; margin-bottom: 25px; } }
+
+        /* ── STATS BAR ── */
+        .stats-bar {
+            background: linear-gradient(135deg, var(--navy) 0%, #1E40AF 100%);
+            border-radius: 12px;
+            padding: 20px 15px;
+            margin-bottom: 25px;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        @media (min-width: 480px) {
+            .stats-bar { grid-template-columns: repeat(3, 1fr); }
+        }
+
+        @media (min-width: 769px) {
+            .stats-bar { grid-template-columns: repeat(5, 1fr); }
+        }
+
+        .stats-bar::before {
+            content: '';
+            position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+            background-image: repeating-linear-gradient(90deg, transparent, transparent 40px, rgba(255,255,255,0.03) 40px, rgba(255,255,255,0.03) 80px);
+        }
+
+        .stat-item {
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .stat-number {
+            font-family: 'Inter Tight', sans-serif;
+            font-weight: 900;
+            font-size: 32px;
+            color: #FCA5A5;
+            line-height: 1;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        @media (min-width: 480px) { .stat-number { font-size: 40px; } }
+        @media (min-width: 769px) { .stat-number { font-size: 48px; } }
+
+        .stat-label {
+            font-size: 18px !important;
+            color: rgba(255,255,255,0.9);
+            font-weight: 700 !important;
+            line-height: 1.3;
+        }
+
+        @media (min-width: 480px) { .stat-label { font-size: 20px !important; } }
+        @media (min-width: 769px) { .stat-label { font-size: 22px !important; } }
+
+        @media (min-width: 480px) { .stat-label { font-size: 13px; } }
+        @media (min-width: 769px) { .stat-label { font-size: 14px; } }
+
+        /* ── TRAP CARDS ── */
+        .trap-grid { display: grid; gap: 15px; margin-bottom: 25px; position: relative; z-index: 1; }
+
+        .trap-card {
+            background: linear-gradient(135deg, #FFFFFF 0%, #F8FAFC 100%);
+            border: 2px solid #E5E7EB;
+            border-left: 6px solid var(--red);
+            padding: 20px;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+
+        /* SVG watermarks per card */
+        .trap-card::before {
+            content: '';
+            position: absolute;
+            bottom: 8px; right: 8px;
+            width: 70px; height: 70px;
+            background-size: contain;
+            background-repeat: no-repeat;
+            opacity: 0.05;
+            z-index: 0;
+        }
+
+        /* Statue of Liberty */
+        .trap-card:nth-child(1)::before {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 70 70'%3E%3Cpath d='M35 5 L32 12 L38 9 L40 14 L35 11 L30 14 L32 18 L38 18 L38 22 L32 22 L30 65 L40 65 L38 22 L38 18 M25 65 L45 65 L45 70 L25 70 Z M20 35 L25 38 L22 42 L20 38 Z' fill='%23000000'/%3E%3C/svg%3E");
+        }
+
+        /* Eagle */
+        .trap-card:nth-child(2)::before {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 70 70'%3E%3Cpath d='M35 22 C35 22 22 12 10 18 L20 28 C20 28 8 26 5 34 L22 36 L26 44 C26 44 20 52 22 58 L32 52 L35 58 L38 52 L48 58 C50 52 44 44 44 44 L48 36 L65 34 C62 26 50 28 50 28 L60 18 C48 12 35 22 35 22Z' fill='%23000000'/%3E%3C/svg%3E");
+        }
+
+        /* Scales of Justice */
+        .trap-card:nth-child(3)::before {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 70 70'%3E%3Crect x='33' y='10' width='4' height='45' fill='%23000'/%3E%3Cpolygon points='20,20 10,38 30,38' fill='%23000'/%3E%3Cpolygon points='50,20 40,38 60,38' fill='%23000'/%3E%3Crect x='15' y='55' width='40' height='4' fill='%23000'/%3E%3C/svg%3E");
+        }
+
+        /* Liberty Bell */
+        .trap-card:nth-child(4)::before {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 70 70'%3E%3Cpath d='M25 20 L45 20 Q55 30 52 50 L18 50 Q15 30 25 20Z' fill='%23000'/%3E%3Crect x='30' y='12' width='10' height='10' fill='%23000'/%3E%3Crect x='15' y='50' width='40' height='5' fill='%23000'/%3E%3Crect x='32' y='33' width='6' height='14' fill='%23fff'/%3E%3C/svg%3E");
+        }
+
+        /* Capitol */
+        .trap-card:nth-child(5)::before {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 70 70'%3E%3Cpath d='M35 8 L30 20 L40 20 Z M28 20 L42 20 L42 25 L28 25 Z M18 25 L52 25 L52 58 L18 58 Z M30 33 L32 33 L32 50 L30 50 Z M38 33 L40 33 L40 50 L38 50 Z M12 58 L58 58 L58 63 L12 63 Z' fill='%23000000'/%3E%3C/svg%3E");
+        }
+
+        @media (min-width: 769px) {
+            .trap-card { padding: 25px; }
+            .trap-card::before { width: 85px; height: 85px; }
+        }
+
+        .trap-card:hover {
+            box-shadow: 0 10px 25px rgba(185,28,28,0.15);
+            transform: translateY(-3px);
+            border-color: var(--red);
+            background: linear-gradient(135deg, #FFF 0%, #FEF2F2 100%);
+        }
+
+        .trap-card::after {
+            content: 'Learn more →';
+            position: absolute;
+            right: 18px; bottom: 14px;
+            font-size: 12px;
+            color: var(--red);
+            font-weight: 700;
+            font-style: italic;
+            opacity: 0.7;
+            transition: all 0.3s ease;
+            z-index: 1;
+        }
+
+        .trap-card:hover::after { opacity: 1; }
+
+        .trap-number {
+            display: inline-block;
+            background: var(--red);
+            color: white;
+            width: 36px; height: 36px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 36px;
+            font-weight: 900;
+            font-size: 18px;
+            margin-bottom: 12px;
+            position: relative;
+            z-index: 1;
+            box-shadow: 0 2px 8px rgba(185,28,28,0.3);
+        }
+
+        .trap-title {
+            font-weight: 800;
+            font-size: 17px;
+            color: var(--navy);
+            margin-bottom: 8px;
+            line-height: 1.2;
+            position: relative;
+            z-index: 1;
+        }
+
+        @media (min-width: 769px) { .trap-title { font-size: 19px; } }
+
+        .trap-description {
+            font-size: 14px;
+            color: var(--text);
+            line-height: 1.6;
+            font-weight: 500;
+            padding-right: 20px;
+            position: relative;
+            z-index: 1;
+            padding-bottom: 20px;
+        }
+
+        @media (min-width: 769px) { .trap-description { font-size: 15px; } }
+
+        .trap-stat {
+            display: inline-block;
+            background: #FEF2F2;
+            border: 1px solid #FECACA;
+            color: var(--red);
+            font-weight: 700;
+            font-size: 13px;
+            padding: 4px 10px;
+            border-radius: 100px;
+            margin-top: 8px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ── THREAT BOX ── */
+        .threat-box {
+            background: linear-gradient(135deg, var(--navy) 0%, #1E40AF 100%);
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+            margin: 25px 0;
+            border-radius: 16px;
+            border: 5px solid #2563EB;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 8px 24px rgba(30, 58, 138, 0.3);
+        }
+
+        .threat-box::before {
+            content: '';
+            position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+            background-image: repeating-linear-gradient(90deg, transparent, transparent 40px, rgba(220,38,38,0.07) 40px, rgba(220,38,38,0.07) 80px);
+        }
+
+        @media (min-width: 769px) { .threat-box { padding: 40px; } }
+
+        .threat-statement {
+            font-family: 'Inter Tight', sans-serif;
+            font-weight: 900;
+            font-size: 20px;
+            line-height: 1.3;
+            margin-bottom: 15px;
+            color: #FCA5A5;
+            position: relative;
+            z-index: 1;
+        }
+
+        @media (min-width: 480px) { .threat-statement { font-size: 24px; } }
+        @media (min-width: 769px) { .threat-statement { font-size: 28px; } }
+
+        .threat-explanation {
+            font-size: 15px;
+            opacity: 0.95;
+            line-height: 1.6;
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ── ACTION BOX ── */
+        .action-urgent {
+            background: linear-gradient(135deg, var(--orange) 0%, #C2410C 100%);
+            color: white;
+            padding: 30px 20px;
+            border-radius: 12px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Torch watermark */
+        .action-urgent::after {
+            content: '';
+            position: absolute;
+            right: 20px; bottom: 20px;
+            width: 55px; height: 75px;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 55 75'%3E%3Cpath d='M27 5 Q22 15 27 22 Q32 15 27 5Z' fill='%23FFF' opacity='0.2'/%3E%3Cpath d='M27 22 Q18 30 27 38 Q36 30 27 22Z' fill='%23FFF' opacity='0.15'/%3E%3Crect x='23' y='38' width='8' height='25' fill='%23FFF' opacity='0.12'/%3E%3Crect x='18' y='63' width='18' height='4' fill='%23FFF' opacity='0.12'/%3E%3C/svg%3E");
+            background-size: contain;
+            background-repeat: no-repeat;
+        }
+
+        @media (min-width: 769px) { .action-urgent { padding: 40px; } }
+
+        .action-title {
+            font-family: 'Inter Tight', sans-serif;
+            font-weight: 900;
+            font-size: 24px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        @media (min-width: 769px) { .action-title { font-size: 30px; } }
+
+        .action-list { display: grid; gap: 12px; max-width: 600px; margin: 0 auto; position: relative; z-index: 1; }
+
+        .action-item {
+            background: rgba(0,0,0,0.2);
+            padding: 16px 18px;
+            border-radius: 8px;
+            border-left: 4px solid white;
+            font-weight: 600;
+            font-size: 15px;
+            line-height: 1.4;
+        }
+
+        .action-item::before { content: '→ '; font-weight: 900; }
+
+        /* ── FOOTER ── */
+        .footer {
+            background: linear-gradient(135deg, #1F2937 0%, #111827 100%);
+            color: white;
+            padding: 25px 20px;
+            text-align: center;
+            font-size: 14px;
+            line-height: 1.6;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+            background-image: radial-gradient(circle at center, rgba(255,255,255,0.02) 1px, transparent 1px);
+            background-size: 30px 30px;
+            pointer-events: none;
+        }
+
+        @media (min-width: 769px) { .footer { padding: 30px 40px; } }
+
+        .footer-urgent { font-weight: 700; font-size: 16px; color: #FCA5A5; margin-bottom: 10px; position: relative; z-index: 1; }
+        .footer p { position: relative; z-index: 1; }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <!-- HEADER -->
+    <div class="header">
+        <div class="header-content">
+            <div class="alert-badge">⚠️ DEMOCRACY UNDER ATTACK</div>
+            <h1>The SAVE Act</h1>
+            <p class="header-subtitle">A dangerous voter suppression bill on its way to the Senate. Here's the truth.</p>
+        </div>
+    </div>
+
+    <!-- WARNING BOX -->
+    <div style="background: linear-gradient(135deg, #7F1D1D 0%, #991B1B 100%); padding: 35px 25px; position: relative; overflow: hidden; box-shadow: 0 8px 24px rgba(127, 29, 29, 0.4);">
+        <!-- Alert stripe pattern -->
+        <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-image: repeating-linear-gradient(45deg, transparent, transparent 20px, rgba(0,0,0,0.08) 20px, rgba(0,0,0,0.08) 40px); opacity: 0.4;"></div>
+        
+        <!-- Eagle watermark -->
+        <div style="position: absolute; right: -30px; bottom: -20px; width: 180px; height: 140px; background-image: url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 80'%3E%3Cpath d='M50 25 C50 25 35 15 20 20 L30 32 C30 32 15 30 10 38 L28 40 L32 48 C32 48 25 55 28 62 L38 55 L50 62 L62 55 L72 62 C75 55 68 48 68 48 L72 40 L90 38 C85 30 70 32 70 32 L80 20 C65 15 50 25 50 25Z M45 32 L55 32 L55 40 L45 40Z' fill='%23FFFFFF'/%3E%3C/svg%3E&quot;); background-size: contain; background-repeat: no-repeat; opacity: 0.06; z-index: 0;"></div>
+        
+        <!-- Alert badge -->
+        <div style="display: inline-block; background: rgba(0,0,0,0.25); border: 2px solid rgba(255,255,255,0.3); padding: 6px 16px; border-radius: 100px; margin-bottom: 16px; position: relative; z-index: 1;">
+            <span style="font-size: 12px; font-weight: 900; text-transform: uppercase; letter-spacing: 2px; color: #FEE2E2;">⚠️ Critical Alert</span>
+        </div>
+        
+        <p style="font-size: 19px; line-height: 1.5; font-weight: 600; color: white; position: relative; z-index: 1; margin: 0; text-shadow: 0 2px 4px rgba(0,0,0,0.2);">
+            The SAVE Act is a <span style="font-weight: 900; text-transform: uppercase; color: #FEE2E2;">DANGEROUS VOTER SUPPRESSION BILL</span> that's on its way to the Senate. It requires Proof of Citizenship to vote. That's not "show ID", that's "prove you're a citizen". They're different! And it's not what you think.
+        </p>
+    </div>
+
+    <!-- CONTENT -->
+    <div class="content">
+
+        <!-- KEY STATS BAR -->
+        <div class="stats-bar">
+            <div class="stat-item">
+                <span class="stat-number">174M</span>
+                <span class="stat-label">Americans without a valid passport</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">26M</span>
+                <span class="stat-label">Americans who move every year</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">56M</span>
+                <span class="stat-label">Married women facing name mismatch</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">21.3M</span>
+                <span class="stat-label">Citizens without citizenship documents on hand</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">1.3M+</span>
+                <span class="stat-label">Active-duty military at risk of losing their vote</span>
+            </div>
+        </div>
+
+        <!-- TRAPS HEADER -->
+        <h2 class="section-header">6 Traps That Destroy Democracy</h2>
+        <p style="text-align:center; margin-bottom:20px; font-size:14px; color:#6B7280; font-weight:600;">
+            👆 Click each box to learn more
+        </p>
+
+        <!-- TRAP CARDS -->
+        <div class="trap-grid">
+
+            <a href="learn-more.html#trap1" class="trap-card">
+                <div class="trap-number">1</div>
+                <div class="trap-title">Your CA License Proves Nothing</div>
+                <p class="trap-description">
+                    California issues licenses to non-citizens — so your CA driver's license (even REAL ID) does NOT prove citizenship. You'd need a passport or birth certificate to register for federal elections.
+                </p>
+                <span class="trap-stat">~174 million Americans lack a valid passport</span>
+            </a>
+
+            <a href="learn-more.html#trap2" class="trap-card">
+                <div class="trap-number">2</div>
+                <div class="trap-title">Re-Register Every Time You Move</div>
+                <p class="trap-description">
+                    Under the SAVE Act, every move, name change, or party change requires appearing IN PERSON with original citizenship documents all over again. No scans. No online registration.
+                </p>
+                <span class="trap-stat">~26 million Americans move every year</span>
+            </a>
+
+            <a href="learn-more.html#trap3" class="trap-card">
+                <div class="trap-number">3</div>
+                <div class="trap-title">Targets Women Specifically</div>
+                <p class="trap-description">
+                    ~56 million married women have a name mismatch between their current ID and birth certificate. They'd need a birth certificate + marriage certificate + photo ID just to stay registered. This is deliberate.
+                </p>
+                <span class="trap-stat">~25 million women need 3 separate documents</span>
+            </a>
+
+            <a href="learn-more.html#trap4" class="trap-card">
+                <div class="trap-number">4</div>
+                <div class="trap-title">Creates Federal Voter Surveillance</div>
+                <p class="trap-description">
+                    Forces every state to send ALL voter rolls to DHS quarterly. One database error = you're purged. The Constitution gives states control of elections for a reason — 50 systems are harder to corrupt than one.
+                </p>
+                <span class="trap-stat">3.8 million citizens have zero citizenship documents</span>
+            </a>
+
+            <a href="learn-more.html#trap5" class="trap-card">
+                <div class="trap-number">5</div>
+                <div class="trap-title">Kills Mail Voting & Criminalizes Officials</div>
+                <p class="trap-description">
+                    87% of California voters vote by mail — this law effectively ends that. It also creates criminal penalties for election workers who register people without "proper" documents, intimidating nonpartisan staff.
+                </p>
+                <span class="trap-stat">87% of CA voters use mail-in ballots</span>
+            </a>
+
+            <a href="learn-more.html#trap6" class="trap-card" style="border-left-color: #1E3A8A;">
+                <div class="trap-number" style="background: #1E3A8A;">6</div>
+                <div class="trap-title">Strips Deployed Troops of Their Right to Vote</div>
+                <p class="trap-description">
+                    Active-duty service members who move due to deployment must re-register IN PERSON with original documents. If they're deployed overseas when registration is due, they <strong>cannot register</strong> — and cannot receive a ballot. The bill as written mechanically disenfranchises the very people defending our democracy.
+                </p>
+                <span class="trap-stat" style="background:#EFF6FF; border-color:#BFDBFE; color:#1E3A8A;">1.3M+ active-duty troops at risk</span>
+            </a>
+
+        </div>
+
+        <!-- THREAT BOX -->
+        <div class="threat-box">
+            <div class="threat-statement">"This isn't election security. It's engineering who gets to vote."</div>
+            <p class="threat-explanation">
+                The SAVE Act creates overlapping document barriers that fall hardest on women, low-income voters, renters, young people, the elderly — and shockingly, active-duty military personnel who can't appear in person while deployed. These are not unintended consequences. Poor people and women are deliberately targeted because they tend to vote Democratic. And stripping troops of their vote gives this bill cover — making it look nonpartisan while the damage is anything but.
+            </p>
+        </div>
+
+        <!-- ACTION -->
+        <div class="action-urgent">
+            <h3 class="action-title">⚡ Act Now — Before It's Too Late</h3>
+            <div class="action-list">
+                <div class="action-item">Call your Senators TODAY — demand they vote NO on the SAVE Act</div>
+                <div class="action-item">Share this page — most people don't know what this bill actually does</div>
+                <div class="action-item">Contact local election officials — ask them to speak out against federal takeover</div>
+                <div class="action-item">Organize — democracy doesn't defend itself. We do.</div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- FOOTER -->
+    <div class="footer">
+        <p class="footer-urgent">⚠️ TIME IS RUNNING OUT</p>
+        <p>In-person voter fraud is virtually non-existent in America. The SAVE Act solves a fake problem while creating real machinery for mass disenfranchisement. This is the end of fair elections if it passes.</p>
+        <p style="margin-top:15px; font-weight:700; color:#FCA5A5;">This is not hyperbole. This is documented fact.</p>
+    </div>
+
+</div>
+</body>
+</html>
