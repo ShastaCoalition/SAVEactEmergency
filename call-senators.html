@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Call Your California Senators - Stop the SAVE Act</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;900&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(180deg, #1F2937 0%, #111827 100%);
+            color: white;
+            line-height: 1.5;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .back-link {
+            display: inline-block;
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            margin-bottom: 25px;
+            opacity: 0.9;
+            font-weight: 600;
+        }
+
+        .back-link:hover { opacity: 1; }
+
+        h1 {
+            font-family: 'Inter Tight', sans-serif;
+            font-weight: 900;
+            font-size: 28px;
+            line-height: 1.2;
+            margin-bottom: 10px;
+            color: #FCA5A5;
+        }
+
+        @media (min-width: 480px) { h1 { font-size: 36px; } }
+
+        .subtitle {
+            font-size: 16px;
+            opacity: 0.9;
+            margin-bottom: 30px;
+            line-height: 1.5;
+        }
+
+        .urgent-box {
+            background: rgba(185, 28, 28, 0.2);
+            border: 2px solid #B91C1C;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+
+        .urgent-box h2 {
+            font-size: 18px;
+            font-weight: 900;
+            color: #FCA5A5;
+            margin-bottom: 10px;
+        }
+
+        .urgent-box p {
+            font-size: 15px;
+            line-height: 1.6;
+            opacity: 0.95;
+        }
+
+        .senator-card {
+            background: linear-gradient(135deg, #1E3A8A 0%, #1E40AF 100%);
+            border-radius: 16px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 8px 24px rgba(30, 58, 138, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .senator-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: repeating-linear-gradient(45deg, transparent, transparent 20px, rgba(255,255,255,0.02) 20px, rgba(255,255,255,0.02) 40px);
+        }
+
+        .senator-content { position: relative; z-index: 1; }
+
+        .senator-name {
+            font-family: 'Inter Tight', sans-serif;
+            font-weight: 900;
+            font-size: 22px;
+            margin-bottom: 8px;
+            color: white;
+        }
+
+        .senator-title {
+            font-size: 14px;
+            color: #BFDBFE;
+            margin-bottom: 18px;
+            font-weight: 600;
+        }
+
+        .phone-button {
+            display: block;
+            background: white;
+            color: #1E3A8A;
+            text-decoration: none;
+            padding: 16px 24px;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 18px;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+
+        .phone-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.3);
+        }
+
+        .phone-button::before {
+            content: '📞 ';
+            font-size: 20px;
+        }
+
+        .talking-points {
+            background: rgba(251, 191, 36, 0.1);
+            border: 2px solid #F59E0B;
+            border-radius: 12px;
+            padding: 25px;
+            margin-top: 30px;
+        }
+
+        .talking-points h2 {
+            font-family: 'Inter Tight', sans-serif;
+            font-weight: 900;
+            font-size: 20px;
+            color: #FDE047;
+            margin-bottom: 15px;
+        }
+
+        .talking-points ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .talking-points li {
+            padding-left: 25px;
+            margin-bottom: 12px;
+            font-size: 15px;
+            line-height: 1.5;
+            position: relative;
+        }
+
+        .talking-points li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: #FDE047;
+            font-weight: 900;
+        }
+
+        .tip-box {
+            background: rgba(59, 130, 246, 0.1);
+            border-left: 4px solid #3B82F6;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .tip-box strong {
+            color: #93C5FD;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-link">← Back to Main Page</a>
+
+        <h1>Call Your California Senators</h1>
+        <p class="subtitle">Demand they vote NO on the SAVE Act. Your call makes a difference!</p>
+
+        <div class="urgent-box">
+            <h2>🚨 Why This Matters</h2>
+            <p>Senate offices track constituent calls. Even a 30-second call is counted. When hundreds of Californians call, senators listen. Your voice matters.</p>
+        </div>
+
+        <!-- Senator Alex Padilla -->
+        <div class="senator-card">
+            <div class="senator-content">
+                <div class="senator-name">Senator Alex Padilla</div>
+                <div class="senator-title">California - Democratic Party</div>
+                <a href="tel:+12022245623" class="phone-button">(202) 224-3553</a>
+            </div>
+        </div>
+
+        <!-- Senator Adam Schiff -->
+        <div class="senator-card">
+            <div class="senator-content">
+                <div class="senator-name">Senator Adam Schiff</div>
+                <div class="senator-title">California - Democratic Party</div>
+                <a href="tel:+12022243553" class="phone-button">(202) 224-5623</a>
+            </div>
+        </div>
+
+        <!-- Talking Points -->
+        <div class="talking-points">
+            <h2>💬 What to Say</h2>
+            <ul>
+                <li><strong>Keep it short:</strong> "I'm calling to urge Senator [NAME] to vote NO on the SAVE Act."</li>
+                <li><strong>Share your concern:</strong> "This bill strips deployed military of their vote and creates unnecessary barriers for millions of legitimate voters."</li>
+                <li><strong>Make it personal:</strong> "As a California voter, this matters to me because [reason]."</li>
+                <li><strong>End strong:</strong> "I'm counting on the Senator to protect voting rights. Thank you."</li>
+            </ul>
+
+            <div class="tip-box">
+                <strong>Pro Tip:</strong> You'll likely reach a staffer, not the Senator directly. That's normal! Staffers log every call and brief the Senator. Be polite and firm.
+            </div>
+        </div>
+    </div>
+</body>
+</html>
